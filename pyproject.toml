@@ -11,6 +11,10 @@ dependencies = [
     "django-filter>=24.0",
     "python-decouple>=3.8",
     "psycopg2-binary>=2.9",
+<<<<<<< HEAD
+=======
+    "dj-database-url>=2.1",
+>>>>>>> 0b2e4c8be314ffa33ce2794b0bcae5c5a471b1b5
 ]
 
 [dependency-groups]

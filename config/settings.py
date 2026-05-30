@@ -1,5 +1,10 @@
+
 from pathlib import Path
 from decouple import config
+<<<<<<< HEAD
+=======
+import dj_database_url
+>>>>>>> 0b2e4c8be314ffa33ce2794b0bcae5c5a471b1b5
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -51,6 +56,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
+<<<<<<< HEAD
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
@@ -61,6 +67,25 @@ DATABASES = {
         "PORT": config("DB_PORT", default="5432"),
     }
 }
+=======
+USE_POSTGRES = config('USE_POSTGRES', default=True, cast=bool)
+
+if USE_POSTGRES:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=config('DATABASE_URL', default=''),
+            conn_max_age=600,
+            conn_health_checks=True,
+        )
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+>>>>>>> 0b2e4c8be314ffa33ce2794b0bcae5c5a471b1b5
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
